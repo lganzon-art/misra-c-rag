@@ -15,7 +15,7 @@ A Streamlit assistant for questions about uploaded MISRA C references. Input gua
 - Structured responses: LangChain requests an `answer`, retrieved-context `citation_ids`, and an `insufficient_evidence` flag. The app removes citation IDs absent from the retrieved excerpts. This checks citation references, not whether every factual claim is correct.
 - RAGAS evaluation: reports faithfulness, answer relevancy, context precision, context recall, and answer correctness against manually reviewed references.
 
-The supplied notebooks are examples, not MISRA authority. No copyrighted MISRA standard is included. Add only documents you are authorized to use.
+
 
 ## Run
 
