@@ -10,6 +10,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from functools import lru_cache
 from pathlib import Path
+from unittest.mock import patch
 
 os.environ.setdefault("HF_HOME", str(Path(__file__).parent / "data" / "model_cache"))
 os.environ.setdefault("HF_HUB_DISABLE_IMPLICIT_TOKEN", "1")
@@ -22,6 +23,7 @@ from guardrails_ai.detect_jailbreak import DetectJailbreak
 from guardrails_ai.guardrails_pii import GuardrailsPII
 from guardrails_ai.restricttotopic import RestrictToTopic
 from openai import OpenAI
+from presidio_analyzer.nlp_engine import NlpEngineProvider
 
 
 AUDIT_PATH = Path(__file__).parent / "data" / "guardrail_events.jsonl"
@@ -61,10 +63,12 @@ def _guards() -> tuple[Guard, Guard, Guard]:
         guard.configure(allow_metrics_collection=False)
     settings.rc.enable_metrics = False
 
-    pii.use(GuardrailsPII(
-        entities=["CREDIT_CARD", "US_SSN", "PHONE_NUMBER", "EMAIL_ADDRESS", "PERSON"],
-        use_local=True, on_fail="fix",
-    ))
+    small_spacy_config = Path(__file__).parent / "presidio_nlp.yaml"
+    with patch.object(NlpEngineProvider, "_get_full_conf_path", return_value=small_spacy_config):
+        pii.use(GuardrailsPII(
+            entities=["CREDIT_CARD", "US_SSN", "PHONE_NUMBER", "EMAIL_ADDRESS", "PERSON"],
+            use_local=True, on_fail="fix",
+        ))
     jailbreak.use(DetectJailbreak(use_local=True, on_fail="noop"))
     # RestrictToTopic constructs a classifier even with disable_classifier=True.
     # Reuse the already-loaded jailbreak model; only its LLM topic check runs.

@@ -15,7 +15,7 @@ A Streamlit assistant for questions about uploaded MISRA C references. Input gua
 - Structured responses: LangChain requests an `answer`, retrieved-context `citation_ids`, and an `insufficient_evidence` flag. The app removes citation IDs absent from the retrieved excerpts. This checks citation references, not whether every factual claim is correct.
 - RAGAS evaluation: reports faithfulness, answer relevancy, context precision, context recall, and answer correctness against manually reviewed references.
 
-
+The supplied notebooks are examples, not MISRA authority. No copyrighted MISRA standard is included. Add only documents you are authorized to use.
 
 ## Run
 
@@ -31,6 +31,8 @@ Copy-Item .env.example .env
 streamlit run app.py
 ```
 
+`requirements.txt` contains only the live app dependencies and is the file Streamlit Community Cloud installs. It installs the small English spaCy model during the build; `presidio_nlp.yaml` directs Presidio to use that model for PII screening. This replaces the large spaCy model but keeps Guardrails AI's PII masking, local jailbreak check, topic check, and OpenAI moderation. The PII validator still loads GLiNER, so test masking after deployment.
+
 Upload PDF or TXT files from the sidebar, or place them in `data/misra_docs/` before starting. PDF pages are read with PyMuPDF. TXT files are treated as extracted source text. Qdrant files are stored locally in `data/qdrant/`; corpus or embedding-model changes create a separate index version. Keep this directory to preserve the index, and back it up with the project data.
 
 Response caching is enabled by default. The cache key includes model settings, the response schema, and the full prompt, including retrieved excerpts and recent conversation. If any of these change, the next request misses the cache. Retrieval still runs on every question; a cache hit skips only model generation. To demonstrate a hit, ask the same question in two new conversations with the same indexed documents. The `misra_answer_debug_v2` trace reports `response_cache_hit` and generation latency. Set `RESPONSE_CACHE_ENABLED=false` in `.env` and restart to disable caching. To clear saved responses, stop the app and delete `data/response_cache.sqlite`.
@@ -43,7 +45,23 @@ Each guardrail decision writes a JSON line to `data/guardrail_events.jsonl` with
 
 ## RAGAS evaluation
 
-Score the dataset:
+For local evaluation and synthetic dataset generation, install the additional packages first:
+
+```powershell
+python -m pip install -r requirements-eval.txt
+```
+
+`requirements-eval.txt` includes the live app requirements plus RAGAS, `datasets`, and `pandas`. It is not needed by Streamlit Community Cloud.
+
+Generate an optional synthetic test set from the PDF/TXT files in `data/misra_docs/`:
+
+```powershell
+python generate_synthetic_data.py --size 50
+```
+
+This follows the attached notebook: RAGAS builds summaries, headlines, and themes, then generates single-hop specific, multi-hop abstract, and multi-hop specific cases. The output includes questions, references, and reference contexts in `data/synthetic_misra_questions.json`. Review generated references before treating them as ground truth; generation makes OpenAI API calls.
+
+Score the generated dataset:
 
 ```powershell
 python evaluate.py data\synthetic_misra_questions.json --output ragas_results.csv

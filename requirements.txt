@@ -10,9 +10,6 @@ langsmith>=0.14,<1
 qdrant-client>=1.12,<2
 rank-bm25>=0.2,<1
 pymupdf>=1.24,<2
-ragas>=0.4.3,<0.5
-datasets==4.4.1
-pandas>=2,<3
 flashrank>=0.2,<1
 rapidfuzz>=3,<4
 guardrails-ai==0.11.0
@@ -21,4 +18,4 @@ guardrails-ai-detect-jailbreak>=0.1.6
 guardrails-ai-restrict-to-topic>=0.1.0
 transformers==4.56.1
 torch==2.8.0
-https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0-py3-none-any.whl
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
