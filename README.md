@@ -43,15 +43,7 @@ Each guardrail decision writes a JSON line to `data/guardrail_events.jsonl` with
 
 ## RAGAS evaluation
 
-Generate an optional synthetic test set from the PDF/TXT files in `data/misra_docs/`:
-
-```powershell
-python generate_synthetic_data.py --size 50
-```
-
-This follows the attached notebook: RAGAS builds summaries, headlines, and themes, then generates single-hop specific, multi-hop abstract, and multi-hop specific cases. The output includes questions, references, and reference contexts in `data/synthetic_misra_questions.json`. Review generated references before treating them as ground truth; generation makes OpenAI API calls.
-
-Score the generated dataset:
+Score the dataset:
 
 ```powershell
 python evaluate.py data\synthetic_misra_questions.json --output ragas_results.csv
