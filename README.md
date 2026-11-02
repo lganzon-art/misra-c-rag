@@ -53,15 +53,8 @@ python -m pip install -r requirements-eval.txt
 
 `requirements-eval.txt` includes the live app requirements plus RAGAS, `datasets`, and `pandas`. It is not needed by Streamlit Community Cloud.
 
-Generate an optional synthetic test set from the PDF/TXT files in `data/misra_docs/`:
 
-```powershell
-python generate_synthetic_data.py --size 50
-```
-
-This follows the attached notebook: RAGAS builds summaries, headlines, and themes, then generates single-hop specific, multi-hop abstract, and multi-hop specific cases. The output includes questions, references, and reference contexts in `data/synthetic_misra_questions.json`. Review generated references before treating them as ground truth; generation makes OpenAI API calls.
-
-Score the generated dataset:
+Score the evaluation_dataset.json:
 
 ```powershell
 python evaluate.py data\synthetic_misra_questions.json --output ragas_results.csv
