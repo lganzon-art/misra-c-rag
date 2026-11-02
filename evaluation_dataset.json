@@ -1,0 +1,630 @@
+{
+  "items": [
+    {
+      "question": "What is the main purpose of the MISRA C guidelines?",
+      "reference": "The main purpose is to define a subset of C that removes or reduces opportunities for programming mistakes, particularly in software with safety, security, high-integrity, or high-reliability requirements.",
+      "reference_contexts": [
+        "The MISRA C Guidelines define a subset of the C language in which the opportunity to make mistakes is either removed or reduced. Many standards for the development of safety-related software require, or recommend, the use of a language subset, and this can also be used to develop any application with security, high integrity or high reliability requirements. As well as defining this subset, these MISRA C Guidelines provide: • Educational material for those developing C programs; • Reference material for tool developers."
+      ],
+      "source": "MISRA.pdf",
+      "page": 9,
+      "section": "Section 1 - The vision",
+      "id": "misra-2012-r1-q01",
+      "reference_context_locations": [
+        {
+          "pdf_page": 9,
+          "printed_page": "1",
+          "section": "Section 1"
+        }
+      ],
+      "pages": [
+        9
+      ],
+      "printed_page": "1"
+    },
+    {
+      "question": "Does following MISRA C by itself guarantee robust, error-free software?",
+      "reference": "No. The document says adherence alone does not ensure error-free robust software or guarantee portability and reuse.",
+      "reference_contexts": [
+        "Disclaimer Adherence to the requirements of this document does not in itself ensure error-free robust software or guarantee portability and re-use. Compliance with the requirements of this document, or any other standard, does not of itself confer immunity from legal obligations."
+      ],
+      "source": "MISRA.pdf",
+      "page": 4,
+      "section": "Disclaimer",
+      "id": "misra-2012-r1-q02",
+      "reference_context_locations": [
+        {
+          "pdf_page": 4,
+          "printed_page": "ii",
+          "section": "Disclaimer"
+        }
+      ],
+      "pages": [
+        4
+      ],
+      "printed_page": "ii"
+    },
+    {
+      "question": "Why does MISRA C recommend understanding the compiler’s implementation-defined behavior?",
+      "reference": "Understanding the compiler’s implementation-defined choices and language extensions matters because they can affect program behavior and portability; static analysis tools also need to be configured to match those choices.",
+      "reference_contexts": [
+        "2.2.1 Language definition The Standard does not specify the language completely but places some aspects under the control of an implementation. This is intentional, partly because of the desire to support many pre-existing implementations for widely different target processors. As a result there are areas of the language in which: • The behaviour is undefined; • The behaviour is unspecified; • An implementation is free to choose its own behaviour provided that it is documented. A program that relies on undefined or unspecified behaviour is not necessarily guaranteed to behave in a predictable manner. A program that places excessive reliance on implementation-defined behaviour may be difficult to port to a different target. The presence of implementation-defined behaviour may also hinder static analysis if it is not possible to configure the analyser to handle it.",
+        "4.2 Understanding the compiler In this document, the term “compiler”, referred to as “the implementation” by the ISO C standards [2], [8], means the compiler itself as well as any associated tools such as a linker, library manager and executable file format conversion tools. The compiler may provide various options that control its behaviour. It is important to understand the effect of these options as their use, or non-use, might affect: • The availability of language extensions; • The conformance of the compiler with the ISO C standards; • The resources, especially processing time and memory space, required by the program; • The likelihood that a defect in the compiler will be exposed, such as might occur when complex highly-optimizing code transformations are performed. It is important to understand the way in which the compiler implements those features of the C language that are termed “implementation-defined” in the ISO C standards. It is also important to understand any language extensions that the compiler may provide. The compiler developer may maintain a list of defects that are known to affect the compiler along with any workarounds that are available. Knowledge of the contents of this list would clearly be advantageous before starting a project using that compiler. If such a list is not available from the compiler developer then a local list should be maintained whenever a defect, or suspected defect, is discovered and reported to the compiler developer. 4.3 Understanding the static analysis tools The documentation for each static analysis tool being used on a project should be reviewed in order to understand: • How to configure the analyser to match the compiler’s implementation-defined behaviour, e.g. sizes of the integer types; • Which MISRA C guidelines the analyser is capable of checking (Section 5.3); • Whether it is possible to configure the analyser to handle any language extensions that will be used; • Whether it is possible to adjust the analyser’s behaviour in order to achieve a different balance between analysis time and analysis precision."
+      ],
+      "source": "MISRA.pdf",
+      "page": 14,
+      "section": "Sections 2.2.1, 4.2 and 4.3",
+      "id": "misra-2012-r1-q03",
+      "reference_context_locations": [
+        {
+          "pdf_page": 10,
+          "printed_page": "2",
+          "section": "Section 2.2.1"
+        },
+        {
+          "pdf_page": 14,
+          "printed_page": "6",
+          "section": "Sections 4.2-4.3"
+        }
+      ],
+      "pages": [
+        10,
+        14
+      ],
+      "printed_page": "6"
+    },
+    {
+      "question": "When should a project adopt MISRA C?",
+      "reference": "The guidance recommends adopting MISRA C from the outset. For existing code with a proven track record, the project should weigh the expected benefit of compliance against the risk of introducing defects during changes.",
+      "reference_contexts": [
+        "5.1 Adoption MISRA C should be adopted from the outset of a project. If a project is building on existing code that has a proven track record, then the benefits of compliance with MISRA C may be outweighed by the risks of introducing a defect when making the code compliant. In such cases, a judgement on adopting MISRA C should be made based on the net benefit likely to be obtained."
+      ],
+      "source": "MISRA.pdf",
+      "page": 16,
+      "section": "Section 5.1 - Adoption",
+      "id": "misra-2012-r1-q04",
+      "reference_context_locations": [
+        {
+          "pdf_page": 16,
+          "printed_page": "8",
+          "section": "Section 5.1"
+        }
+      ],
+      "pages": [
+        16
+      ],
+      "printed_page": "8"
+    },
+    {
+      "question": "What is a compliance matrix used for in a MISRA C project?",
+      "reference": "A compliance matrix lists every guideline and records how compliance will be checked. If a guideline cannot be completely checked by a tool, manual review is required to complete the check.",
+      "reference_contexts": [
+        "5.3 Compliance In order to ensure that code complies with all of the MISRA C guidelines, a compliance matrix should be produced. This matrix lists each guideline and indicates how it is to be checked. For most guidelines, the easiest, most reliable and most cost-effective means of checking will be to use a static analysis tool or tools, the compiler, or a combination of these. Where a guideline cannot be completely checked by a tool, then a manual review will be required."
+      ],
+      "source": "MISRA.pdf",
+      "page": 17,
+      "section": "Section 5.3 - Compliance",
+      "id": "misra-2012-r1-q05",
+      "reference_context_locations": [
+        {
+          "pdf_page": 17,
+          "printed_page": "9",
+          "section": "Section 5.3"
+        }
+      ],
+      "pages": [
+        17
+      ],
+      "printed_page": "9"
+    },
+    {
+      "question": "What does MISRA C Rule 1.1 require?",
+      "reference": "The program must meet the syntax and constraints of the selected C standard and stay within the implementation’s translation limits. Supported compiler extensions are permitted under this rule.",
+      "reference_contexts": [
+        "Rule 1.1 The program shall contain no violations of the standard C syntax and constraints, and shall not exceed the implementation’s translation limits [MISRA Guidelines Table 3], [IEC 61508-7: Table C.1], [ISO 26262-6: Table 1] Category Required Analysis Decidable, Single Translation Unit Applies to C90, C99 Amplification The program shall use only those features of the C language and its library that are specified in the chosen version of The Standard (see Section 3.1). The Standard permits implementations to provide language extensions and the use of such extensions is permitted by this rule. Except when making use of a language extension, a program shall not: • Contain any violations of the language syntax described in The Standard; • Contain any violations of the constraints imposed by The Standard. A program shall not exceed the translation limits imposed by the implementation. The minimum translation limits are specified by The Standard but an implementation may provide higher limits. Note: a conforming implementation generates a diagnostic for syntax and constraint violations but be aware that: • The diagnostic need not necessarily be an error but could, for example, be a warning; • The program may be translated and an executable generated despite the presence of a syntax or constraint violation; Note: a conforming implementation does not need to generate a diagnostic when a translation limit is exceeded; an executable may be generated but it is not guaranteed to execute correctly."
+      ],
+      "source": "MISRA.pdf",
+      "page": 46,
+      "section": "Rule 1.1",
+      "id": "misra-2012-r1-q06",
+      "reference_context_locations": [
+        {
+          "pdf_page": 46,
+          "printed_page": "38",
+          "section": "Rule 1.1"
+        }
+      ],
+      "pages": [
+        46
+      ],
+      "printed_page": "38"
+    },
+    {
+      "question": "What is the status and intent of Rule 1.2 on language extensions?",
+      "reference": "Rule 1.2 is advisory and recommends avoiding language extensions because reliance on them can reduce portability. If an extension is used, its justification and the checks for its valid use should be documented in the project design material.",
+      "reference_contexts": [
+        "Rule 1.2 Language extensions should not be used Category Advisory Analysis Undecidable, Single Translation Unit Applies to C90, C99 Rationale A program that relies on language extensions may be less portable than one that does not. Although The Standard requires that a conforming implementation document any extensions that it provides to the language, there is a risk that this documentation might not provide a full description of the behaviour in all circumstances. If this rule is not applied, the decision to use each language extension should be justified in the project’s design documentation. The methods by which valid use of each extension will be assured, for example checking the compiler and its diagnostics, should also be documented. It is recognized that it is necessary to use language extensions in embedded systems. The Standard requires that an extension does not alter the behaviour of any strictly conforming program. For example, a compiler might implement, as an extension, full evaluation of binary logical operators even though The Standard specifies that evaluation stops as soon as the result can be determined. Such an extension does not conform to The Standard because side effects in the right-hand operand of a logical AND operator would always occur, giving rise to a different behaviour."
+      ],
+      "source": "MISRA.pdf",
+      "page": 47,
+      "section": "Rule 1.2",
+      "id": "misra-2012-r1-q07",
+      "reference_context_locations": [
+        {
+          "pdf_page": 47,
+          "printed_page": "39",
+          "section": "Rule 1.2"
+        }
+      ],
+      "pages": [
+        47
+      ],
+      "printed_page": "39"
+    },
+    {
+      "question": "What behavior does Rule 1.3 prohibit?",
+      "reference": "Rule 1.3 prohibits occurrences of undefined or critical unspecified behavior not already prevented by more specific MISRA C guidelines.",
+      "reference_contexts": [
+        "Rule 1.3 There shall be no occurrence of undefined or critical unspecified behaviour Category Required Analysis Undecidable, System Applies to C90, C99 Amplification Some undefined and unspecified behaviours are dealt with by specific rules. This rule prevents all other undefined and critical unspecified behaviours. Appendix H lists the undefined behaviours and those unspecified behaviours that are considered critical.",
+        "Rationale Any program that gives rise to undefined or unspecified behaviour may not behave in the expected manner. In many cases, the effect is to make the program non-portable but it is also possible for more serious problems to occur. For example, undefined behaviour might affect the result of a computation. If correct operation of the software is dependent on this computation then system safety might be compromised. The problem is particularly difficult to detect if the undefined behaviour only manifests itself on rare occasions. Many of the MISRA C guidelines have been designed to avoid certain undefined and unspecified behaviours. For example, compliance with all of Rule 11.4, Rule 11.8 and Rule 19.2 ensures that it is not possible in C to create a non- const qualified pointer to an object declared with a const-qualified type. This avoids C90 [Undefined 39] and C99 [Undefined 61]. However, other behaviours are not covered by specific guidelines for example because: • It is unlikely that the behaviour will be encountered; • There is no practical guidance that can be given other than the obvious statement that the behaviour should be avoided. Instead of introducing a guideline for each undefined and critical unspecified behaviour, the MISRA C Guidelines directly address those that are considered most important and most likely to occur in practice. Those behaviours that do not have specific guidelines are all covered together by this single rule. Appendix H lists all undefined and critical unspecified behaviours, along with the MISRA C guidelines that prevent their occurrence. It therefore indicates which behaviours are expected to be prevented by this rule and which behaviours are covered by other rules. Note: some implementations may provide well-defined behaviour for some of the undefined and unspecified behaviours listed in The Standard. If such well-defined behaviours are relied upon, including by means of a language extension, it will be necessary to deviate this rule in respect of those behaviours."
+      ],
+      "source": "MISRA.pdf",
+      "page": 47,
+      "section": "Rule 1.3",
+      "id": "misra-2012-r1-q08",
+      "reference_context_locations": [
+        {
+          "pdf_page": 47,
+          "printed_page": "39",
+          "section": "Rule 1.3"
+        },
+        {
+          "pdf_page": 48,
+          "printed_page": "40",
+          "section": "Rule 1.3 continuation"
+        }
+      ],
+      "pages": [
+        47,
+        48
+      ],
+      "printed_page": "39"
+    },
+    {
+      "question": "How does MISRA C distinguish unreachable code from dead code?",
+      "reference": "Unreachable code cannot execute; dead code does execute, but removing an operation would not change program behavior. Rule 2.1 addresses unreachable code, while Rule 2.2 addresses dead code.",
+      "reference_contexts": [
+        "Rule 2.1 A project shall not contain unreachable code [IEC 61508-7 Section C.5.9], [DO-178C Section 6.4.4.3.c] Category Required Analysis Undecidable, System Applies to C90, C99 Rationale Provided that a program does not exhibit any undefined behaviour, unreachable code cannot be executed and cannot have any effect on the program’s outputs. The presence of unreachable code may therefore indicate an error in the program’s logic.",
+        "Rule 2.2 There shall be no dead code [IEC 61508-7 Section C.5.10], [ISO 26262-6 Section 9.4.5], [DO-178C Section 6.4.4.3.c] Category Required Analysis Undecidable, System Applies to C90, C99 Amplification Any operation that is executed but whose removal would not affect program behaviour constitutes dead code. Operations that are introduced by language extensions are assumed always to have an effect on program behaviour. Note: The behaviour of an embedded system is often determined not just by the nature of its actions, but also by the time at which they occur. Note: unreachable code is not dead code as it cannot be executed. Note: Initialization is not the same as an assignment operation and is therefore not a candidate for dead code. Rationale The presence of dead code may be indicative of an error in the program’s logic. Since dead code may be removed by a compiler, its presence may cause confusion. Exception A cast to void is assumed to indicate a value that is intentionally not being used. The cast is therefore not dead code itself. It is treated as using its operand which is therefore also not dead code ."
+      ],
+      "source": "MISRA.pdf",
+      "page": 48,
+      "section": "Rules 2.1-2.2",
+      "id": "misra-2012-r1-q09",
+      "reference_context_locations": [
+        {
+          "pdf_page": 48,
+          "printed_page": "40",
+          "section": "Rule 2.1"
+        },
+        {
+          "pdf_page": 50,
+          "printed_page": "42",
+          "section": "Rule 2.2"
+        }
+      ],
+      "pages": [
+        48,
+        50
+      ],
+      "printed_page": "40"
+    },
+    {
+      "question": "What does Rule 2.1 require regarding unreachable code?",
+      "reference": "Rule 2.1 is Required: a project shall not contain unreachable code. Code excluded by preprocessing is outside this rule.",
+      "reference_contexts": [
+        "Rule 2.1 A project shall not contain unreachable code [IEC 61508-7 Section C.5.9], [DO-178C Section 6.4.4.3.c] Category Required Analysis Undecidable, System Applies to C90, C99 Rationale Provided that a program does not exhibit any undefined behaviour, unreachable code cannot be executed and cannot have any effect on the program’s outputs. The presence of unreachable code may therefore indicate an error in the program’s logic.",
+        "A compiler is permitted to remove any unreachable code although it does not have to do so. Unreachable code that is not removed by the compiler wastes resources, for example: • It occupies space in the target machine’s memory; • Its presence may cause a compiler to select longer, slower jump instructions when transferring control around the unreachable code; • Within a loop, it might prevent the entire loop from residing in an instruction cache. It is sometimes desirable to insert code that appears to be unreachable in order to handle exceptional cases. For example, in a switch statement in which every possible value of the controlling expression is covered by an explicit case, a default clause shall be present according to Rule 16.4. The purpose of the default clause is to trap a value that should not normally occur but that may have been generated as a result of: • Undefined behaviour present in the program; • A failure of the processor hardware. If a compiler can prove that a default clause is unreachable, it may remove it, thereby eliminating the defensive action. On the assumption that the defensive action is important, it will be necessary either to demonstrate that the compiler does not eliminate the code despite it being unreachable, or to take steps to make the defensive code reachable. The former course of action requires a deviation against this rule, probably with a review of the object code or unit testing being used to support such a deviation. The latter course of action can usually be achieved by means of a volatile access. For example, a compiler might determine that the range of values held by x is covered by the case clauses in a switch statement such as: uint16_t x; switch ( x ) By forcing x to be accessed by means of a volatile qualified lvalue, the compiler has to assume that the controlling expression could take any value: switch ( *( volatile uint16_t * ) &x ) Note: code that has been conditionally excluded by pre-processor directives is not subject to this rule as it is not presented to the later phases of translation."
+      ],
+      "source": "MISRA.pdf",
+      "page": 48,
+      "section": "Rule 2.1",
+      "id": "misra-2012-r1-q10",
+      "reference_context_locations": [
+        {
+          "pdf_page": 48,
+          "printed_page": "40",
+          "section": "Rule 2.1"
+        },
+        {
+          "pdf_page": 49,
+          "printed_page": "41",
+          "section": "Rule 2.1 continuation"
+        }
+      ],
+      "pages": [
+        48,
+        49
+      ],
+      "printed_page": "40"
+    },
+    {
+      "question": "What is the key test for dead code under Rule 2.2?",
+      "reference": "An operation is dead code when it executes but could be removed without affecting program behavior.",
+      "reference_contexts": [
+        "Rule 2.2 There shall be no dead code [IEC 61508-7 Section C.5.10], [ISO 26262-6 Section 9.4.5], [DO-178C Section 6.4.4.3.c] Category Required Analysis Undecidable, System Applies to C90, C99 Amplification Any operation that is executed but whose removal would not affect program behaviour constitutes dead code. Operations that are introduced by language extensions are assumed always to have an effect on program behaviour. Note: The behaviour of an embedded system is often determined not just by the nature of its actions, but also by the time at which they occur. Note: unreachable code is not dead code as it cannot be executed. Note: Initialization is not the same as an assignment operation and is therefore not a candidate for dead code. Rationale The presence of dead code may be indicative of an error in the program’s logic. Since dead code may be removed by a compiler, its presence may cause confusion. Exception A cast to void is assumed to indicate a value that is intentionally not being used. The cast is therefore not dead code itself. It is treated as using its operand which is therefore also not dead code ."
+      ],
+      "source": "MISRA.pdf",
+      "page": 50,
+      "section": "Rule 2.2",
+      "id": "misra-2012-r1-q11",
+      "reference_context_locations": [
+        {
+          "pdf_page": 50,
+          "printed_page": "42",
+          "section": "Rule 2.2"
+        }
+      ],
+      "pages": [
+        50
+      ],
+      "printed_page": "42"
+    },
+    {
+      "question": "What do advisory Rules 2.3 through 2.7 have in common?",
+      "reference": "Advisory Rules 2.3 through 2.7 discourage unused type, tag, macro, and label declarations and unused function parameters, respectively.",
+      "reference_contexts": [
+        "Rule 2.3 A project should not contain unused type declarations Category Advisory Analysis Decidable, System Applies to C90, C99 Rationale If a type is declared but not used, then it is unclear to a reviewer if the type is redundant or it has been left unused by mistake.",
+        "Rule 2.4 A project should not contain unused tag declarations Category Advisory Analysis Decidable, System Applies to C90, C99 Rationale If a tag is declared but not used, then it is unclear to a reviewer if the tag is redundant or it has been left unused by mistake.",
+        "Rule 2.5 A project should not contain unused macro declarations Category Advisory Analysis Decidable, System Applies to C90, C99 Amplification #undef of a macro is considered to be a use of a macro. Rationale If a macro is declared but not used, then it is unclear to a reviewer if the macro is redundant or it has been left unused by mistake.",
+        "Rule 2.6 A function should not contain unused label declarations Category Advisory Analysis Decidable, Single Translation Unit Applies to C90, C99 Rationale If a label is declared but not used, then it is unclear to a reviewer if the label is redundant or it has been left unused by mistake.",
+        "Rule 2.7 There should be no unused parameters in functions Category Advisory Analysis Decidable, Single Translation Unit Applies to C90, C99 Rationale Most functions will be specified as using each of their parameters. If a function parameter is unused, it is possible that the implementation of the function does not match its specification. This rule highlights such potential mismatches."
+      ],
+      "source": "MISRA.pdf",
+      "page": 52,
+      "section": "Rules 2.3-2.7",
+      "id": "misra-2012-r1-q12",
+      "reference_context_locations": [
+        {
+          "pdf_page": 52,
+          "printed_page": "44",
+          "section": "Rule 2.3"
+        },
+        {
+          "pdf_page": 52,
+          "printed_page": "44",
+          "section": "Rule 2.4"
+        },
+        {
+          "pdf_page": 53,
+          "printed_page": "45",
+          "section": "Rule 2.5"
+        },
+        {
+          "pdf_page": 53,
+          "printed_page": "45",
+          "section": "Rule 2.6"
+        },
+        {
+          "pdf_page": 54,
+          "printed_page": "46",
+          "section": "Rule 2.7"
+        }
+      ],
+      "pages": [
+        52,
+        53,
+        54
+      ],
+      "printed_page": "44"
+    },
+    {
+      "question": "What does Rule 2.7 recommend for function parameters?",
+      "reference": "Rule 2.7 is Advisory: functions should have no unused parameters.",
+      "reference_contexts": [
+        "Rule 2.7 There should be no unused parameters in functions Category Advisory Analysis Decidable, Single Translation Unit Applies to C90, C99 Rationale Most functions will be specified as using each of their parameters. If a function parameter is unused, it is possible that the implementation of the function does not match its specification. This rule highlights such potential mismatches."
+      ],
+      "source": "MISRA.pdf",
+      "page": 54,
+      "section": "Rule 2.7",
+      "id": "misra-2012-r1-q13",
+      "reference_context_locations": [
+        {
+          "pdf_page": 54,
+          "printed_page": "46",
+          "section": "Rule 2.7"
+        }
+      ],
+      "pages": [
+        54
+      ],
+      "printed_page": "46"
+    },
+    {
+      "question": "What comment content does Rule 3.1 restrict?",
+      "reference": "Rule 3.1 prohibits `/*` and `//` within a comment, except that `//` is permitted within a `//` comment.",
+      "reference_contexts": [
+        "Rule 3.1 The character sequences /* and // shall not be used within a comment Category Required Analysis Decidable, Single Translation Unit Applies to C90, C99 Rationale If a comment starting sequence, /* or //, occurs within a /* comment, is it quite likely to be caused by a missing */ comment ending sequence. If a comment starting sequence occurs within a // comment, it is probably because a region of code has been commented-out using //. Exception The sequence // is permitted within a // comment."
+      ],
+      "source": "MISRA.pdf",
+      "page": 54,
+      "section": "Rule 3.1",
+      "id": "misra-2012-r1-q14",
+      "reference_context_locations": [
+        {
+          "pdf_page": 54,
+          "printed_page": "46",
+          "section": "Rule 3.1"
+        }
+      ],
+      "pages": [
+        54
+      ],
+      "printed_page": "46"
+    },
+    {
+      "question": "Why does Rule 3.2 prohibit line-splicing in `//` comments?",
+      "reference": "A backslash immediately before a newline can splice the next physical line into the comment. That can unintentionally hide code from the compiler.",
+      "reference_contexts": [
+        "Rule 3.2 Line-splicing shall not be used in // comments Category Required Analysis Decidable, Single Translation Unit Applies to C99 Amplification Line-splicing occurs when the \\ character is immediately followed by a new-line character. If the source file contains multibyte characters, they are converted to the source character set before any splicing occurs. Rationale If the source line containing a // comment ends with a \\ character in the source character set, the next line becomes part of the comment. This may result in unintentional removal of code. Note: line-splicing is described in Section 5.1.1.2(2) of both C90 and C99."
+      ],
+      "source": "MISRA.pdf",
+      "page": 55,
+      "section": "Rule 3.2",
+      "id": "misra-2012-r1-q15",
+      "reference_context_locations": [
+        {
+          "pdf_page": 55,
+          "printed_page": "47",
+          "section": "Rule 3.2"
+        }
+      ],
+      "pages": [
+        55
+      ],
+      "printed_page": "47"
+    },
+    {
+      "question": "How should octal and hexadecimal escape sequences be terminated under Rule 4.1?",
+      "reference": "Terminate each escape sequence with another escape sequence or with the end of its character constant or string literal. This avoids ambiguity about which characters belong to the escape.",
+      "reference_contexts": [
+        "Rule 4.1 Octal and hexadecimal escape sequences shall be terminated C90 [Implementation 11], C99 [Implementation J.3.4(7, 8)] Category Required Analysis Decidable, Single Translation Unit Applies to C90, C99 Amplification An octal or hexadecimal escape sequence shall be terminated by either: • The start of another escape sequence, or • The end of the character constant or the end of a string literal. Rationale There is potential for confusion if an octal or hexadecimal escape sequence is followed by other characters. For example, the character constant '\\x1f' consists of a single character whereas the character constant '\\x1g' consists of the two characters '\\x1' and 'g'. The manner in which multi-character constants are represented as integers is implementation-defined. The potential for confusion is reduced if every octal or hexadecimal escape sequence in a character constant or string literal is terminated."
+      ],
+      "source": "MISRA.pdf",
+      "page": 56,
+      "section": "Rule 4.1",
+      "id": "misra-2012-r1-q16",
+      "reference_context_locations": [
+        {
+          "pdf_page": 56,
+          "printed_page": "48",
+          "section": "Rule 4.1"
+        }
+      ],
+      "pages": [
+        56
+      ],
+      "printed_page": "48"
+    },
+    {
+      "question": "Why does Rule 4.2 advise against trigraphs?",
+      "reference": "Rule 4.2 advises against trigraphs because their two-question-mark sequences can be confused with ordinary text, and trigraphs are replaced before preprocessing, potentially changing how the source is interpreted.",
+      "reference_contexts": [
+        "Rule 4.2 Trigraphs should not be used Category Advisory Analysis Decidable, Single Translation Unit Applies to C90, C99 Rationale Trigraphs are denoted by a sequence of two question marks followed by a specified third character (e.g. ??- represents a ~ (tilde) character and ??) represents a ] ). They can cause accidental confusion with other uses of two question marks. Note: the so-called digraphs: <: :> <% %> %: %:%:",
+        "are permitted because they are tokens. Trigraphs are replaced wherever they appear in the program prior to preprocessing. Example For example the string \"(Date should be in the form ??-??-??)\" would not behave as expected, actually being interpreted by the compiler as \"(Date should be in the form ~~]\""
+      ],
+      "source": "MISRA.pdf",
+      "page": 56,
+      "section": "Rule 4.2",
+      "id": "misra-2012-r1-q17",
+      "reference_context_locations": [
+        {
+          "pdf_page": 56,
+          "printed_page": "48",
+          "section": "Rule 4.2"
+        },
+        {
+          "pdf_page": 57,
+          "printed_page": "49",
+          "section": "Rule 4.2 continuation"
+        }
+      ],
+      "pages": [
+        56,
+        57
+      ],
+      "printed_page": "48"
+    },
+    {
+      "question": "What does Rule 5.1 require for external identifiers?",
+      "reference": "Rule 5.1 requires external identifiers to be distinct within the implementation's significant-character limits. In C90, at least the first six characters are significant, but case need not be significant. In C99, at least the first 31 characters are significant, with each universal or corresponding extended source character occupying between six and ten characters.",
+      "reference_contexts": [
+        "Rule 5.1 External identifiers shall be distinct C90 [Undefined 7], C99 [Unspecified 7; Undefined 28] Category Required Analysis Decidable, System Applies to C90, C99 Amplification This rule requires that different external identifiers be distinct within the limits imposed by the implementation. The definition of distinct depends on the implementation and on the version of the C language that is being used: • In C90 the minimum requirement is that the first 6 characters of external identifiers are significant but their case is not required to be significant; • In C99 the minimum requirement is that the first 31 characters of external identifiers are significant, with each universal character or corresponding extended source character occupying between 6 and 10 characters. In practice, many implementations provide greater limits. For example it is common for external identifiers in C90 to be case-sensitive and for at least the first 31 characters to be significant. Rationale If two identifiers differ only in non-significant characters, the behaviour is undefined. If portability is a concern, it would be prudent to apply this rule using the minimum limits specified in The Standard. Long identifiers may impair the readability of code. While many automatic code generation systems produce long identifiers, there is a good argument for keeping identifier lengths well below this limit. Note: In C99, if an extended source character appears in an external identifier and that character does not have a corresponding universal character, The Standard does not specify how many characters it occupies."
+      ],
+      "source": "MISRA.pdf",
+      "page": 57,
+      "section": "Rule 5.1",
+      "id": "misra-2012-r1-q18",
+      "reference_context_locations": [
+        {
+          "pdf_page": 57,
+          "printed_page": "49",
+          "section": "Rule 5.1"
+        }
+      ],
+      "pages": [
+        57
+      ],
+      "printed_page": "49"
+    },
+    {
+      "question": "What identifiers are covered by Rule 5.2?",
+      "reference": "Rule 5.2 requires identifiers declared in the same scope and name space to be distinct within the implementation's significant-character limits. It excludes a comparison when both identifiers are external, because Rule 5.1 covers that case, or when either identifier is a macro identifier, because Rules 5.4 and 5.5 cover that case. A mixed external/non-external pair can still be covered by Rule 5.2.",
+      "reference_contexts": [
+        "Rule 5.2 Identifiers declared in the same scope and name space shall be distinct C90 [Undefined 7], C99 [Undefined 28] Category Required Analysis Decidable, Single Translation Unit Applies to C90, C99 Amplification This rule does not apply if both identifiers are external identifiers because this case is covered by Rule 5.1. This rule does not apply if either identifier is a macro identifier because this case is covered by Rule 5.4 and Rule 5.5. The definition of distinct depends on the implementation and on the version of the C language that is being used: • In C90, the minimum requirement is that the first 31 characters are significant; • In C99, the minimum requirement is that the first 63 characters are significant, with each universal character or extended source character counting as a single character. Rationale If two identifiers differ only in non-significant characters, the behaviour is undefined. If portability is a concern, it would be prudent to apply this rule using the minimum limits specified in The Standard. Long identifiers may impair the readability of code. While many automatic code generation systems produce long identifiers, there is a good argument for keeping identifier lengths well below this limit.",
+        "Example In the following example, the implementation in question supports 31 significant case-sensitive characters in identifiers that do not have external linkage. The identifier engine_exhaust_gas_temperature_local is compliant with this rule. Although it is not distinct from the identifier engine_exhaust_gas_temperature_raw, it is in a different scope. However, it is not compliant with Rule 5.3. /* 1234567890123456789012345678901********* Characters */ extern int32_t engine_exhaust_gas_temperature_raw; static int32_t engine_exhaust_gas_temperature_scaled; /* Non-compliant */ void f ( void ) { /* 1234567890123456789012345678901********* Characters */ int32_t engine_exhaust_gas_temperature_local; /* Compliant */ } /* 1234567890123456789012345678901********* Characters */ static int32_t engine_exhaust_gas_temp_raw; static int32_t engine_exhaust_gas_temp_scaled; /* Compliant */"
+      ],
+      "source": "MISRA.pdf",
+      "page": 58,
+      "section": "Rule 5.2",
+      "id": "misra-2012-r1-q19",
+      "reference_context_locations": [
+        {
+          "pdf_page": 58,
+          "printed_page": "50",
+          "section": "Rule 5.2"
+        },
+        {
+          "pdf_page": 59,
+          "printed_page": "51",
+          "section": "Rule 5.2 example"
+        }
+      ],
+      "pages": [
+        58,
+        59
+      ],
+      "printed_page": "50"
+    },
+    {
+      "question": "What does Rule 5.3 prohibit?",
+      "reference": "Rule 5.3 prohibits an identifier in an inner scope from hiding an identifier in an outer scope. Identifiers in different name spaces do not hide one another.",
+      "reference_contexts": [
+        "Rule 5.3 An identifier declared in an inner scope shall not hide an identifier declared in an outer scope Category Required Analysis Decidable, Single Translation Unit Applies to C90, C99 Amplification An identifier declared in an inner scope shall be distinct from any identifier declared in an outer scope. The definition of distinct depends on the implementation and the version of the C language that is being used: • In C90, the minimum requirement is that the first 31 characters are significant; • In C99, the minimum requirement is that the first 63 characters are significant, with each universal character or extended source character counting as a single character. Rationale If an identifier is declared in an inner scope but is not distinct from an identifier that already exists in an outer scope, then the inner-most declaration will “hide” the outer one. This may lead to developer confusion. Note: An identifier declared in one name space does not hide an identifier declared in a different name space. The terms outer and inner scope are defined as follows: • Identifiers that have file scope can be considered as having the outermost scope; • Identifiers that have block scope have a more inner scope;",
+        "• Successive, nested blocks, introduce more inner scopes. Example void fn1 ( void ) { int16_t i; /* Declare an object \"i\" */ { int16_t i; /* Non-compliant - hides previous \"i\" */ i = 3; /* Could be confusing as to which \"i\" this refers */ } } struct astruct { int16_t m; }; extern void g ( struct astruct *p ); int16_t xyz = 0; /* Declare an object \"xyz\" */ void fn2 ( struct astruct xyz ) /* Non-compliant - outer \"xyz\" is * now hidden by parameter name */ { g ( &xyz ); } uint16_t speed; void fn3 ( void ) { typedef float32_t speed; /* Non-compliant - type hides object */ }"
+      ],
+      "source": "MISRA.pdf",
+      "page": 59,
+      "section": "Rule 5.3",
+      "id": "misra-2012-r1-q20",
+      "reference_context_locations": [
+        {
+          "pdf_page": 59,
+          "printed_page": "51",
+          "section": "Rule 5.3"
+        },
+        {
+          "pdf_page": 60,
+          "printed_page": "52",
+          "section": "Rule 5.3 continuation"
+        }
+      ],
+      "pages": [
+        59,
+        60
+      ],
+      "printed_page": "51"
+    },
+    {
+      "question": "What must be distinct when defining a macro under Rule 5.4?",
+      "reference": "The source requires a macro being defined to have a name distinct from other currently defined macro names and their parameters. Parameter names within a given macro must also be distinct from one another. Parameter names need not be distinct across different macros. Distinctness is assessed within the implementation's significant-character limits.",
+      "reference_contexts": [
+        "Rule 5.4 Macro identifiers shall be distinct C90 [Undefined 7], C99 [Unspecified 7; Undefined 28] Category Required Analysis Decidable, Single Translation Unit Applies to C90, C99 Amplification This rule requires that, when a macro is being defined, its name be distinct from: • the names of the other macros that are currently defined; and • the names of their parameters. It also requires that the names of the parameters of a given macro be distinct from each other but does not require that macro parameters names be distinct across two different macros.",
+        "The definition of distinct depends on the implementation and on the version of the C language that is being used: • In C90, the minimum requirement is that the first 31 characters of macro identifiers are significant; • In C99, the minimum requirement is that the first 63 characters of macro identifiers are significant. In practice, implementations may provide greater limits. This rule requires that macro identifiers be distinct within the limits imposed by the implementation. Rationale If two macro identifiers differ only in non-significant characters, the behaviour is undefined. Since macro parameters are active only during the expansion of their macro, there is no issue with parameters in one macro being confused with parameters in another macro. If portability is a concern, it would be prudent to apply this rule using the minimum limits specified in The Standard. Long macro identifiers may impair the readability of code. While many automatic code generation systems produce long macro identifiers, there is a good argument for keeping macro identifier lengths well below this limit. Note: In C99, if an extended source character appears in a macro name and that character does not have a corresponding universal character, The Standard does not specify how many characters it occupies."
+      ],
+      "source": "MISRA.pdf",
+      "page": 60,
+      "section": "Rule 5.4",
+      "id": "misra-2012-r1-q21",
+      "reference_context_locations": [
+        {
+          "pdf_page": 60,
+          "printed_page": "52",
+          "section": "Rule 5.4"
+        },
+        {
+          "pdf_page": 61,
+          "printed_page": "53",
+          "section": "Rule 5.4 continuation"
+        }
+      ],
+      "pages": [
+        60,
+        61
+      ],
+      "printed_page": "52"
+    },
+    {
+      "question": "What does Rule 5.6 require for typedef names?",
+      "reference": "A typedef name must be unique across name spaces and translation units. Multiple declarations are permitted when the typedef definition is in a header included by multiple source files. The typedef name may also match its associated structure, union, or enumeration tag.",
+      "reference_contexts": [
+        "Rule 5.6 A typedef name shall be a unique identifier Category Required Analysis Decidable, System Applies to C90, C99 Amplification A typedef name shall be unique across all name spaces and translation units. Multiple declarations of the same typedef name are only permitted by this rule if the type definition is made in a header file and that header file is included in multiple source files. Rationale Reusing a typedef name either as another typedef name or as the name of a function, object or enumeration constant, may lead to developer confusion. Exception The typedef name may be the same as the structure, union or enumeration tag name associated with the typedef."
+      ],
+      "source": "MISRA.pdf",
+      "page": 63,
+      "section": "Rule 5.6",
+      "id": "misra-2012-r1-q22",
+      "reference_context_locations": [
+        {
+          "pdf_page": 63,
+          "printed_page": "55",
+          "section": "Rule 5.6"
+        }
+      ],
+      "pages": [
+        63
+      ],
+      "printed_page": "55"
+    },
+    {
+      "question": "How does Rule 5.8 treat names with external linkage?",
+      "reference": "An identifier used to define an object or function with external linkage must not be used for another purpose in any name space or translation unit, including for an identifier with no linkage.",
+      "reference_contexts": [
+        "Rule 5.8 Identifiers that define objects or functions with external linkage shall be unique Category Required Analysis Decidable, System Applies to C90, C99 Amplification An identifier used as an external identifier shall not be used for any other purpose in any name space or translation unit, even if it denotes an object with no linkage. Rationale Enforcing uniqueness of identifier names in this manner helps avoid confusion. Identifiers of objects that have no linkage need not be unique since there is minimal risk of such confusion."
+      ],
+      "source": "MISRA.pdf",
+      "page": 65,
+      "section": "Rule 5.8",
+      "id": "misra-2012-r1-q23",
+      "reference_context_locations": [
+        {
+          "pdf_page": 65,
+          "printed_page": "57",
+          "section": "Rule 5.8"
+        }
+      ],
+      "pages": [
+        65
+      ],
+      "printed_page": "57"
+    },
+    {
+      "question": "Is uniqueness of internal-linkage identifiers required or advisory under Rule 5.9?",
+      "reference": "Rule 5.9 is advisory: identifiers defining objects or functions with internal linkage should be unique.",
+      "reference_contexts": [
+        "Rule 5.9 Identifiers that define objects or functions with internal linkage should be unique Category Advisory Analysis Decidable, System Applies to C90, C99 Amplification An identifier name that defines objects or functions with internal linkage should be unique across all name spaces and translation units. Any identifier used in this way should not have the same name as any other identifier, even if that other identifier denotes an object with no linkage. Rationale Enforcing uniqueness of identifier names in this manner helps avoid confusion. Exception An inline function with internal linkage may be defined in more than one translation unit provided that all such definitions are made in the same header file that is included in each translation unit."
+      ],
+      "source": "MISRA.pdf",
+      "page": 66,
+      "section": "Rule 5.9",
+      "id": "misra-2012-r1-q24",
+      "reference_context_locations": [
+        {
+          "pdf_page": 66,
+          "printed_page": "58",
+          "section": "Rule 5.9"
+        }
+      ],
+      "pages": [
+        66
+      ],
+      "printed_page": "58"
+    }
+  ],
+  "metadata": {
+    "source_edition": "MISRA C:2012, third edition, first revision, February 2019",
+    "source_pdf_pages": 257,
+    "review_date": "2026-10-29",
+    "review_models": [
+      "GPT-6 Astra (high reasoning), three partitioned reviewers"
+    ],
+    "review_method": "All 24 items checked against complete relevant PDF pages; source wording and exceptions cross-checked; JSON schema, duplicate questions, physical page anchors, and evaluate.py loader compatibility validated. Targeted pages also visually inspected.",
+    "page_numbering": "page, pages, and reference_context_locations.pdf_page use 1-based physical PDF pages; printed_page uses the page label printed in the document.",
+    "reference_contexts_format": "Extracted source passages, with PDF layout whitespace normalized; locations are parallel to reference_contexts.",
+    "ids": "Stable identifiers assigned in original 1-based item order.",
+    "scope": "24-case introductory and Rules 1-5 smoke test; not a representative full-document benchmark.",
+    "source_dataset_sha256": "fe38382a57411cd6ca685ef1183333a71f7c27bc26807592bb0da8ceca02264b",
+    "open_interpretation": "Item 21 preserves the provided Rule 5.4 wording 'their parameters'. This review does not independently adjudicate its broader cross-macro interpretation.",
+    "evaluation_run": false
+  }
+}
