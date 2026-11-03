@@ -15,7 +15,14 @@ A Streamlit assistant for questions about uploaded MISRA C references. Input gua
 - Structured responses: LangChain requests an `answer`, retrieved-context `citation_ids`, and an `insufficient_evidence` flag. The app removes citation IDs absent from the retrieved excerpts. This checks citation references, not whether every factual claim is correct.
 - RAGAS evaluation: reports faithfulness, answer relevancy, context precision, context recall, and answer correctness against manually reviewed references.
 
-The supplied notebooks are examples, not MISRA authority. No copyrighted MISRA standard is included. Add only documents you are authorized to use.
+No copyrighted MISRA standard is included. Add only documents you are authorized to use.
+
+## System Architecture
+
+The diagram below illustrates the MISRA C Assistant architecture,
+including document processing, retrieval, guardrails, and answer generation.
+
+![MISRA C RAG Architecture](docs/architecture.png)
 
 ## Run
 
@@ -101,3 +108,11 @@ The Streamlit server logs index setup, guardrail warm-up, and answer-generation 
 ## Notes on section parsing
 
 The section parser recognizes genuine headings such as `Rule 8.7` and `Directive 4.1`. Standalone cross-references such as `Rule 5.1.` and `Section 6.7.2.3.` are not treated as headings, so they cannot split a rule body under the wrong section. The chunk index schema is versioned; changing the parser creates a fresh Qdrant index automatically. If a PDF has unusual typography, multi-column extraction, or headings that do not match these patterns, inspect the retrieved evidence and adjust `_SECTION_RE` in `rag.py`; the fallback still splits the page text and labels it as an unlabelled section.
+
+## Documentation
+
+- [System Architecture](docs/architecture.png)
+- [Prompt Comparison](docs/prompt_comparison.md)
+- [Evaluation Results](docs/evaluation_results.md)
+- [Debugging Case](docs/debugging_case.md)
+- [Limitations and Next Steps](docs/limitations_and_next_steps.md)
