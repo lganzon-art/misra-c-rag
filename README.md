@@ -38,7 +38,7 @@ Copy-Item .env.example .env
 streamlit run app.py
 ```
 
-`requirements.txt` contains only the live app dependencies and is the file Streamlit Community Cloud installs. It installs the small English spaCy model during the build; `presidio_nlp.yaml` directs Presidio to use that model for PII screening. This replaces the large spaCy model but keeps Guardrails AI's PII masking, local jailbreak check, topic check, and OpenAI moderation. The PII validator still loads GLiNER, so test masking after deployment.
+`requirements.txt` contains the live app dependencies and is installed when the Docker image is built on the Google Cloud VM. It installs the small English spaCy model during the build; `presidio_nlp.yaml` directs Presidio to use that model for PII screening. This replaces the large spaCy model while retaining Guardrails AI's PII masking, local jailbreak check, topic check, and OpenAI moderation. The PII validator still loads GLiNER, so test masking after deployment. The VM's `data/` directory is mounted into the container at `/app/data` to preserve documents, indexes, and caches across container restarts and image rebuilds.
 
 Upload PDF or TXT files from the sidebar, or place them in `data/misra_docs/` before starting. PDF pages are read with PyMuPDF. TXT files are treated as extracted source text. Qdrant files are stored locally in `data/qdrant/`; corpus or embedding-model changes create a separate index version. Keep this directory to preserve the index, and back it up with the project data.
 
@@ -58,7 +58,7 @@ For local evaluation and synthetic dataset generation, install the additional pa
 python -m pip install -r requirements-eval.txt
 ```
 
-`requirements-eval.txt` includes the live app requirements plus RAGAS, `datasets`, and `pandas`. It is not needed by Streamlit Community Cloud.
+`requirements-eval.txt` includes the live app requirements plus RAGAS, `datasets`, and `pandas`. It is for separate evaluation runs and is not installed in the live Docker image.
 
 
 Score the evaluation_dataset.json:
