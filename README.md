@@ -22,7 +22,7 @@ No copyrighted MISRA standard is included. Add only documents you are authorized
 The diagram below illustrates the MISRA C Assistant architecture,
 including document processing, retrieval, guardrails, and answer generation.
 
-![MISRA C RAG Architecture](docs/architecture.png)
+![MISRA C RAG Architecture](doc/architecture.png)
 
 ## Run
 
@@ -111,8 +111,8 @@ The section parser recognizes genuine headings such as `Rule 8.7` and `Directive
 
 ## Documentation
 
-- [System Architecture](docs/architecture.png)
-- [Prompt Comparison](docs/prompt_comparison.md)
-- [Evaluation Results](docs/evaluation_results.md)
-- [Debugging Case](docs/debugging_case.md)
-- [Limitations and Next Steps](docs/limitations_and_next_steps.md)
+- [System Architecture](doc/architecture.png)
+- [Prompt Comparison](doc/prompt_comparison.md)
+- [Evaluation Results](doc/evaluation_results.md)
+- [Debugging Case](doc/debugging_case.md)
+- [Limitations and Next Steps](doc/limitations_and_next_steps.md)
