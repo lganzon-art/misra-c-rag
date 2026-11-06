@@ -70,7 +70,5 @@ The “ignore all previous instructions” example in the screenshot is logged a
 ## Limitations and next steps
 
 - **Evaluation scope:** The prompt results cover 24 questions. The saved CSV files do not record model and code versions, so future comparisons should save a run manifest and reuse the same dataset, corpus, model settings, and judge configuration. Review reference answers and inspect low-scoring cases manually.
-- **Retrieval proof:** The before and after screenshots show improved coverage for one rule-range question. Capture the corresponding answers and repeat the test on other ranges before claiming a broader correctness improvement.
-- **Guardrail proof:** The recorded attack-like question was blocked by `RestrictToTopic`; the screenshots do not show `DetectJailbreak` firing. Add a separate trace or log event if a jailbreak-detector-specific claim is needed. Input screening does not mask uploaded documents.
 - **Deployment:** The demonstration VM uses an HTTP URL and a local persistent disk. Add HTTPS and suitable access controls for ongoing public use, and back up the `data/` directory. A temporary external IP can change after VM lifecycle events.
 - **Application state:** Conversation history is held in the Streamlit session, so a browser or server restart may lose it. Persist conversations separately if users need long-term history.
