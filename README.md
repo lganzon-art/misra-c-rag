@@ -106,7 +106,6 @@ The section parser recognizes genuine headings such as `Rule 8.7` and `Directive
 ## Documentation
 
 - [System Architecture](doc/architecture.png)
-- [Prompt Comparison](doc/prompt_comparison.md)
-- [Evaluation Results](doc/evaluation_results.md)
-- [Debugging Case](doc/debugging_case.md)
+- [Prompt Comparison](doc/prompt/prompt.md)
+- [Evidence](doc/evidence/README.md)
 - [Limitations and Next Steps](doc/limitations_and_next_steps.md)
