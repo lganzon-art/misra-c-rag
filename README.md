@@ -26,7 +26,7 @@ including document processing, retrieval, guardrails, and answer generation.
 
 ## Run
 
-Requires Python 3.10+ and an OpenAI API key. Chat, embeddings, RAGAS judging, and synthetic test generation use OpenAI; reranking runs locally.
+Requires Python 3.10+ and an OpenAI API key. Chat, embeddings, and RAGAS judging use OpenAI; reranking runs locally.
 
 ```powershell
 Set-Location 'C:\path\to\misra_c_rag'
