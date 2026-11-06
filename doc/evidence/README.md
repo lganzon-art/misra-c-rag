@@ -8,7 +8,7 @@ This folder records the prompt comparison, a retrieval failure and its fix, two 
 
 ## Evaluation method
 
-The prompt comparison uses the 24 questions and reference answers in `evaluation_dataset.json`. Cases may also include `reference_contexts`. The evaluation script, `evaluate.py`, asks the RAG assistant each question in a separate conversation, with response caching disabled for generation. It records the answer and retrieved excerpts, then scores each case with RAGAS. The three saved CSV files provide the per-case question, generated response, retrieved contexts, reference answer, and metric scores. The saved prompt text is in [`prompt/prompt.docx`](prompt/prompt.docx).
+The prompt comparison uses the 24 questions and reference answers in `evaluation_dataset.json`. Cases may also include `reference_contexts`. The evaluation script, `evaluate.py`, asks the RAG assistant each question in a separate conversation, with response caching disabled for generation. It records the answer and retrieved excerpts, then scores each case with RAGAS. The three saved CSV files provide the per-case question, generated response, retrieved contexts, reference answer, and metric scores. The saved prompt text is in [`prompt/prompt.docx`](prompt/prompt.md).
 
 RAGAS computes five metrics: faithfulness compares answer claims with retrieved excerpts; answer relevancy judges how directly the response addresses the question; context precision judges the ranking of relevant retrieved excerpts; context recall judges whether retrieved excerpts cover the reference answer; and answer correctness compares the generated response with the reference answer. These are automated scores, not a manual certification of MISRA C correctness.
 
