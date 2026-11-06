@@ -61,12 +61,6 @@ python -m pip install -r requirements-eval.txt
 `requirements-eval.txt` includes the live app requirements plus RAGAS, `datasets`, and `pandas`. It is for separate evaluation runs and is not installed in the live Docker image.
 
 
-Score the evaluation_dataset.json:
-
-```powershell
-python evaluate.py data\synthetic_misra_questions.json --output ragas_results.csv
-```
-
 The evaluation script runs the app's retrieval and answer path, then scores each case against its reference. Use the manually reviewed `evaluation_dataset.json` for the capstone's 24-case benchmark:
 
 ```powershell
