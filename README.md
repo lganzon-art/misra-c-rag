@@ -52,7 +52,7 @@ Each guardrail decision writes a JSON line to `data/guardrail_events.jsonl` with
 
 ## RAGAS evaluation
 
-For local evaluation and synthetic dataset generation, install the additional packages first:
+For local evaluation, install the additional packages first:
 
 ```powershell
 python -m pip install -r requirements-eval.txt
