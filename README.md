@@ -37,6 +37,7 @@ Copy-Item .env.example .env
 # Set OPENAI_API_KEY in .env before starting the app
 streamlit run app.py
 ```
+LIVE APP (http://34.126.154.147:8501)
 
 `requirements.txt` contains the live app dependencies and is installed when the Docker image is built on the Google Cloud VM. It installs the small English spaCy model during the build; `presidio_nlp.yaml` directs Presidio to use that model for PII screening. This replaces the large spaCy model while retaining Guardrails AI's PII masking, local jailbreak check, topic check, and OpenAI moderation. The PII validator still loads GLiNER, so test masking after deployment. The VM's `data/` directory is mounted into the container at `/app/data` to preserve documents, indexes, and caches across container restarts and image rebuilds.
 
