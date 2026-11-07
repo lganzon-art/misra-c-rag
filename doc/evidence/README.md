@@ -4,7 +4,7 @@ This folder records the prompt comparison, a retrieval failure and its fix, two 
 
 ## Architecture
 
-[architecture.png](architecture.png) shows the deployed Google Cloud VM and Docker runtime, document indexing, guardrails, retrieval, response caching, answer generation, and operational tracing. The diagram is a design summary; the other files in this folder provide measured or observed evidence for specific components.
+[architecture.png](../architecture.png) shows the deployed Google Cloud VM and Docker runtime, document indexing, guardrails, retrieval, response caching, answer generation, and operational tracing. The diagram is a design summary; the other files in this folder provide measured or observed evidence for specific components.
 
 ## Evaluation method
 
